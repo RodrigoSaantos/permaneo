@@ -1,5 +1,4 @@
 import { CourseBanner } from "@/components/course-banner";
-import { Header } from "@/components/header";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
@@ -35,38 +34,35 @@ const courses = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
-      <Header />
-      <main className="flex flex-col row-start-2 items-center sm:items-start">
-        <div className="flex items-center justify-between mt-8">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Catálogo
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Navegue por todo o conteúdo.
-            </p>
+    <main className="flex flex-col row-start-2 items-center sm:items-start">
+      <div className="flex items-center justify-between mt-8">
+        <div className="space-y-1">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Catálogo
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Navegue por todo o conteúdo.
+          </p>
+        </div>
+      </div>
+      <Separator className="my-4" />
+      <div className="relative">
+        <ScrollArea>
+          <div className="flex space-x-4 pb-4">
+            {courses.map((course) => (
+              <CourseBanner
+                key={course.id}
+                course={course}
+                className="w-[250px]"
+                aspectRatio="portrait"
+                width={250}
+                height={330}
+              />
+            ))}
           </div>
-        </div>
-        <Separator className="my-4" />
-        <div className="relative">
-          <ScrollArea>
-            <div className="flex space-x-4 pb-4">
-              {courses.map((course) => (
-                <CourseBanner
-                  key={course.id}
-                  course={course}
-                  className="w-[250px]"
-                  aspectRatio="portrait"
-                  width={250}
-                  height={330}
-                />
-              ))}
-            </div>
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
-        </div>
-      </main>
-    </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+      </div>
+    </main>
   );
 }

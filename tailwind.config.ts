@@ -55,7 +55,21 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+			keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', bottom: '-10' },
+          '100%': { opacity: '1', bottom: '16' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1', bottom: '16' },
+          '100%': { opacity: '0', bottom: '-10' },
+        },
+      },
+			animation: {
+        fadeIn: 'fadeIn 0.5s ease-in-out',
+        fadeOut: 'fadeOut 0.5s ease-in-out',
+      },
   	}
   },
   plugins: [require("tailwindcss-animate")],

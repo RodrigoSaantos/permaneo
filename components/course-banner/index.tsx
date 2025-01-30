@@ -21,7 +21,7 @@ export function CourseBanner({
   ...props
 }: CourseBannerProps) {
   return (
-    <Link href={course.purchased ? `classroom/${course.id}` : `course/${course.id}`}>
+    <Link className="flex justify-center" href={course.purchased ? `classroom/${course.id}` : `course/${course.id}`}>
       <div className={cn("group space-y-3", className)} {...props}>
         <div className="overflow-hidden rounded-md relative">
           <Image
@@ -42,7 +42,7 @@ export function CourseBanner({
           )}
 
           <Button className="absolute hidden left-1/2 -translate-x-1/2 animate-fadeOut group-hover:flex group-hover:animate-fadeIn group-hover:bottom-4">
-            Acessar Curso
+            {course.purchased ? 'Acessar Curso' : 'Adquirir Curso'}
           </Button>
         </div>
         <div className={cn("space-y-1 text-sm", !course.purchased && 'opacity-40')}>

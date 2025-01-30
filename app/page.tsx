@@ -1,6 +1,9 @@
 import { CourseBanner } from "@/components/course-banner";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { api } from "@/lib/axios";
+import { User } from "./data/user";
+import { Catalog } from "@/components/catalog";
 
 const courses = [
   {
@@ -32,7 +35,7 @@ const courses = [
   },
 ]
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="flex flex-col row-start-2 items-center sm:items-start">
       <div className="flex items-center justify-between mt-8">
@@ -46,23 +49,7 @@ export default function Home() {
         </div>
       </div>
       <Separator className="my-4" />
-      <div className="relative">
-        <ScrollArea>
-          <div className="flex space-x-4 pb-4">
-            {courses.map((course) => (
-              <CourseBanner
-                key={course.id}
-                course={course}
-                className="w-[250px]"
-                aspectRatio="portrait"
-                width={250}
-                height={330}
-              />
-            ))}
-          </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
-      </div>
+      <Catalog />
     </main>
   );
 }

@@ -1,14 +1,18 @@
 import { getInitials } from '@/utils/function'
 import { Icons } from '../icons'
 import { Avatar, AvatarFallback } from '../ui/avatar'
+import { User } from '@/app/data/user'
+import { api } from '@/lib/axios'
 
-function Menu() {
+async function Menu() {
+  const { data: user } = await api.get<User>('/user/1')
+
   return (
     <div className='flex items-center space-x-2'>
       <Avatar className="h-8 w-8">
-        <AvatarFallback>{getInitials('Rodrigo')}</AvatarFallback>
+        <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
       </Avatar>
-      <span className='text-primary'>Rodrigo do Santos Silva</span>
+      <span className='text-primary'>{user.name}</span>
     </div>
   )
 }

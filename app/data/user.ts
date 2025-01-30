@@ -4,7 +4,7 @@ interface Course {
 }
 
 export interface User {
-  id: string
-  name: string
+  id?: string
+  name?: string
   courses: Course[]
 }

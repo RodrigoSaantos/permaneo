@@ -1,23 +1,6 @@
-import { getInitials } from '@/utils/function'
 import { Icons } from '../icons'
-import { Avatar, AvatarFallback } from '../ui/avatar'
-import { User } from '@/app/data/user'
-import { api } from '@/lib/axios'
-
-async function Menu() {
-  const { data: user } = await api.get<User>('/user/1')
-
-  return (
-    <div className='flex items-center space-x-2'>
-      <Avatar className="h-8 w-8">
-        <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
-      </Avatar>
-      <span className='text-primary'>{user.name}</span>
-    </div>
-  )
-}
-
-export function Header() {
+import { Menu } from '../menu'
+export async function Header() {
   return (
     <header className="min-h-20 flex h-20 w-full items-center justify-center bg-background border-b">
       <div className="mx-[5%] flex w-full max-w-[1290px] items-center justify-between">

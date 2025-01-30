@@ -16,7 +16,6 @@ export async function Catalog() {
     }
   })
 
-  console.log(courses)
   return (
     <div className="relative">
       <ScrollArea>

@@ -1,39 +1,5 @@
-import { CourseBanner } from "@/components/course-banner";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
-import { api } from "@/lib/axios";
-import { User } from "./data/user";
 import { Catalog } from "@/components/catalog";
-
-const courses = [
-  {
-    "id": 1,
-    "title": "Introdução à Programação com Python",
-    "description": "Aprenda os fundamentos da programação utilizando Python, uma das linguagens mais populares e versáteis.",
-    "price": 49.99,
-    "createdAt": "2023-01-15",
-    "img": "https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80",
-    "purchased": true
-  },
-  {
-    "id": 2,
-    "title": "Desenvolvimento Web com React",
-    "description": "Construa interfaces modernas e interativas para a web utilizando React e suas melhores práticas.",
-    "price": 69.99,
-    "createdAt": "2023-02-10",
-    "img": "https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80",
-    "purchased": false
-  },
-  {
-    "id": 3,
-    "title": "JavaScript Avançado",
-    "description": "Aprofunde seus conhecimentos em JavaScript, abordando conceitos avançados e boas práticas.",
-    "price": 59.99,
-    "createdAt": "2023-03-05",
-    "img": "https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80",
-    "purchased": false
-  },
-]
+import { Separator } from "@/components/ui/separator";
 
 export default async function Home() {
   return (

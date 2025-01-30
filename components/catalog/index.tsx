@@ -1,20 +1,38 @@
-import { api } from "@/lib/axios";
-import { CourseBanner } from "../course-banner";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
-import { Course, CourseResponse } from "../course-banner/data/course";
-import { User } from "@/app/data/user";
+'use client'
 
-export async function Catalog() {
-  const { data: user } = await api.get<User>('/user/1')
-  const { data } = await api.get<CourseResponse[]>('/courses')
-  const courses: Course[] = data.map((course) => {
-    return {
-      ...course,
-      createdAt: course.created_at,
-      purchased: user.courses.some(userPurchased => userPurchased.courseId === course.id),
-      img: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80',
+import { getCourses } from "@/api/getCourses";
+import { useUserStore } from "@/store/userStore";
+import { useEffect, useState } from "react";
+import { CourseBanner } from "../course-banner";
+import { Course } from "../course-banner/data/course";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+
+export function Catalog() {
+  const { user } = useUserStore()
+  const [courses, setCourses] = useState<Course[]>([])
+
+  useEffect(() => {
+    const coursesFetch = async () => {
+      try {
+        const coursesResponse = await getCourses()
+        if (coursesResponse.length) {
+          const coursesFormatted = coursesResponse.map((course) => {
+            return {
+              ...course,
+              createdAt: course.created_at,
+              purchased: user.courses.some(userPurchased => userPurchased.courseId === course.id),
+              img: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80',
+            }
+          })
+          setCourses(coursesFormatted)
+        }
+        
+      } catch (error) {
+        console.error("Erro ao obter os cursos:", error);
+      }
     }
-  })
+    coursesFetch()
+  }, [user.courses])
 
   return (
     <div className="relative">

@@ -14,5 +14,9 @@ export async function setUserCookie(user: User) {
 
 export async function getUserCookie() {
   const cookieStore = await cookies()
-  return cookieStore.get('user')
+  const user = cookieStore.get('user')?.value
+  if (user) {
+    return JSON.parse(user)
+  }
+  return user
 }

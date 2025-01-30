@@ -20,7 +20,7 @@ export function Menu() {
           setUser(userData);
           return
         }
-        if (!user.id) setUser(JSON.parse(userCookie.value));
+        if (!user.id) setUser(userCookie);
       } catch (error) {
         console.error("Erro ao obter usuário:", error);
       }

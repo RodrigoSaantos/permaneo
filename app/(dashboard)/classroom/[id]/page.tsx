@@ -1,8 +1,9 @@
+import { PageProps } from "@/.next/types/app/page";
 import { CourseClassroom } from "@/components/course-classroom";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default async function ClassRoom({ params }: { params: { id: string } }) {
+export default async function ClassRoom({ params }: PageProps) {
   const { id } = await params
 
   return (

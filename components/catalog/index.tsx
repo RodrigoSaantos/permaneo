@@ -1,10 +1,9 @@
 'use client'
 
-import { getCourses } from "@/api/getCourses";
+import { Course, getCourses } from "@/api/getCourses";
 import { useUserStore } from "@/store/userStore";
 import { useEffect, useState } from "react";
 import { CourseBanner } from "../course-banner";
-import { Course } from "../course-banner/data/course";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 export function Catalog() {
@@ -20,8 +19,9 @@ export function Catalog() {
             return {
               ...course,
               createdAt: course.created_at,
-              purchased: user.courses.some(userPurchased => userPurchased.courseId === course.id),
+              purchased: user?.courses.some(userPurchased => userPurchased.courseId === course.id),
               img: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80',
+              isFavorite: user?.favorites.some(userFavorite => userFavorite.courseId === course.id)
             }
           })
           setCourses(coursesFormatted)
@@ -32,7 +32,7 @@ export function Catalog() {
       }
     }
     coursesFetch()
-  }, [user.courses])
+  }, [user?.courses, user?.favorites])
 
   return (
     <div className="relative">

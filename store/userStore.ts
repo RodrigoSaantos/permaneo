@@ -1,4 +1,4 @@
-import { User } from "@/app/data/user";
+import { User } from "@/api/getUserById";
 import { create } from "zustand";
 
 interface UserState {
@@ -9,6 +9,7 @@ interface UserState {
 export const useUserStore = create<UserState>((set) => ({
   user: {
     courses: [],
+    favorites: [],
   },
   setUser: (user) => set({ user }),
 }));

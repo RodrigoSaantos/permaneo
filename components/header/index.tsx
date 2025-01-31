@@ -1,5 +1,6 @@
 import { Icons } from '../icons'
 import { Menu } from '../menu'
+
 export async function Header() {
   return (
     <header className="min-h-20 flex h-20 w-full items-center justify-center bg-background border-b">

@@ -3,8 +3,8 @@
 import { getInitials } from "@/utils/function"
 import { Avatar, AvatarFallback } from "../ui/avatar"
 import { useEffect } from "react"
-import { getUserCookie, setUserCookie } from "./action"
-import { getUser } from "@/api/getUser"
+import { getUserByIdCookie, setUserCookie } from "./action"
+import { getUserById } from "@/api/getUserById"
 import { useUserStore } from "@/store/userStore"
 
 export function Menu() {
@@ -13,9 +13,9 @@ export function Menu() {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const userCookie = await getUserCookie();
+        const userCookie = await getUserByIdCookie();
         if (!userCookie) {
-          const userData = await getUser();
+          const userData = await getUserById('1');
           setUserCookie(userData)
           setUser(userData);
           return
@@ -26,14 +26,14 @@ export function Menu() {
       }
     };
     checkUser();
-  }, [setUser, user.id])
+  }, [setUser, user?.id])
 
   return (
     <div className='flex items-center space-x-2'>
       <Avatar className="h-8 w-8">
-        <AvatarFallback>{getInitials(user.name ?? '')}</AvatarFallback>
+        <AvatarFallback>{getInitials(user?.name ?? '')}</AvatarFallback>
       </Avatar>
-      <span className='text-primary'>{user.name}</span>
+      <span className='text-primary'>{user?.name}</span>
     </div>
   )
 }

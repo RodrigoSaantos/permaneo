@@ -65,10 +65,16 @@ export default {
           '0%': { opacity: '1', bottom: '16' },
           '100%': { opacity: '0', bottom: '-10' },
         },
+        favorite: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '70%': { transform: 'scale(2)' },
+          '100%': { transform: 'scale(1)', opacity: '0' },
+        },
       },
 			animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out',
         fadeOut: 'fadeOut 0.5s ease-in-out',
+				favorite: 'favorite 1s cubic-bezier(0, 0, 0.2, 2)'
       },
   	}
   },

@@ -1,6 +1,6 @@
 import { api } from "@/lib/axios"
-import { CourseResponse } from "../course-banner/data/course"
 import { VideoPlayer } from "./video-player"
+import { CourseResponse } from "@/api/getCourses"
 
 interface Props {
   id: string

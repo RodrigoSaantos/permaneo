@@ -1,7 +1,7 @@
 import { formatDateToBR, formatToBRL } from "@/utils/function";
-import { CourseResponse } from "@/components/course-banner/data/course";
 import { Button } from "@/components/ui/button";
 import { api } from "@/lib/axios";
+import { CourseResponse } from "@/api/getCourses";
 
 interface Props {
   id: string

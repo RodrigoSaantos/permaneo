@@ -88,6 +88,14 @@
           "courseId": "5",
           "dateJoined": "2023-04-05"
         }
+      ],
+      "favorites": [
+        {
+          "courseId": "1"
+        },
+        {
+          "courseId": "2"
+        }
       ]
     }
   ]

@@ -1,6 +1,6 @@
 'use server'
 
-import { User } from '@/app/data/user'
+import { User } from '@/api/getUserById'
 import { cookies } from 'next/headers'
  
 export async function setUserCookie(user: User) {
@@ -12,7 +12,7 @@ export async function setUserCookie(user: User) {
   })
 }
 
-export async function getUserCookie() {
+export async function getUserByIdCookie() {
   const cookieStore = await cookies()
   const user = cookieStore.get('user')?.value
   if (user) {

@@ -1,9 +1,10 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-import { Course } from "./data/course"
 import { Lock } from "lucide-react"
 import { Button } from "../ui/button"
 import Link from "next/link"
+import { Course } from "@/api/getCourses"
+import { FavoriteCourse } from "../favorite-course"
 
 interface CourseBannerProps extends React.HTMLAttributes<HTMLDivElement> {
   course: Course
@@ -40,6 +41,8 @@ export function CourseBanner({
               <Lock className="size-4" />
             </div>
           )}
+
+          <FavoriteCourse isFavorite={course.isFavorite} courseId={course.id} />
 
           <Button className="absolute hidden left-1/2 -translate-x-1/2 animate-fadeOut group-hover:flex group-hover:animate-fadeIn group-hover:bottom-4">
             {course.purchased ? 'Acessar Curso' : 'Adquirir Curso'}
